@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'mathn'
+require 'ruby-prof'
 
 def getPrimes
   begin
@@ -39,7 +40,10 @@ def getMaxContinus(primes,start)
   res
 end
 
-primes=getPrimes
-res=getMaxContinus(primes,0)
-puts res
-puts (res[0]..(res[0]+res[1]-1)).inject(0){|su,r|su + primes[r]}
+result = RubyProf.profile do
+  primes=getPrimes
+  res=getMaxContinus(primes,0)
+end
+printer = RubyProf::GraphPrinter.new(result)
+printer.print(STDOUT, {})
+
