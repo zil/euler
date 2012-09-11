@@ -1,16 +1,7 @@
+require_relative 'euler_util'
+
 def factors_size(int)
-  return 0 unless int.is_a? Integer
-  return 0 if int <= 3
-  size,root = 0,Math::sqrt(int)
-  if(root.floor == root.ceil)
-    size,upper = 1,root-1
-  else
-    upper = root.floor
-  end
-  (2..upper).each do |n|
-    size += 2 if int % n == 0
-  end
-  size
+  Factor.split(int).size
 end
 
 def divisors
