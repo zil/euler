@@ -14,4 +14,14 @@ class Factor
     end
     factor_ary
   end
+
+  def self.proper(int)
+    r = split(int)
+    r.delete(int)
+    r
+  end
+
+  def self.proper_sum(int)
+    proper(int).inject{|s,n|s + n}
+  end
 end
