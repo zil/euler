@@ -25,3 +25,16 @@ class Factor
     proper(int).inject{|s,n|s + n}
   end
 end
+
+class String2Num
+  class << self
+    def numAry(tri)
+      tri.strip.split(/\n/).map do |ln|
+        ln.strip.split(/\s+/).inject([]) do |a,num|
+          a << num.to_i if /\d/ =~ num
+        end
+      end
+    end
+
+  end
+end
